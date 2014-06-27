@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Index page</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/public/handlebars-v1.3.0.js"></script>
+  <script type="text/javascript" src="/assets/application.js"></script>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script id="main" type="text/x-handlebars-template">
+  {{#each posts}}
+    <div>
+      first name: <b>{{first_name}}</b>
+    </div>
+  {{/each}}
+</script>
+
+</body>
+</html>
