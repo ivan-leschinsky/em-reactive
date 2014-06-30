@@ -12,6 +12,8 @@ This app is a full-stack web application written completely on ruby. It uses opa
 
 Usage
 
-```
-rackup config.ru -s thin -E production
+``` bash
+$ bundle install
+$ rake db:create db:migrate
+$ rackup config.ru -s thin -E production
 ```
