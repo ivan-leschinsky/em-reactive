@@ -1,1 +1,1 @@
-require 'models/post'
+require 'models/profile'

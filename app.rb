@@ -1,4 +1,5 @@
-$: << File.expand_path("..", __FILE__)
+ROOT = File.expand_path("..", __FILE__)
+$: << ROOT
 
 require 'faye/websocket'
 require 'active_record'
@@ -21,10 +22,11 @@ require 'shared/lib/uid'
 require "em-synchrony/mysql2"
 require "em-synchrony/activerecord"
 
-ActiveRecord::Base.establish_connection(adapter: 'em_mysql2', database: 'testdb', pool: 10, username: 'root', password: '')
+ActiveRecord::Base.configurations = YAML.load_file(File.join(ROOT, "config", "database.yml"))
+ActiveRecord::Base.establish_connection(:development)
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 
-require 'shared/models/post'
+require 'shared/models/profile'
 
 class WsApp
   def self.call(env)

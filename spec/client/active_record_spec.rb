@@ -65,15 +65,15 @@ describe "client ActiveRecord::Base" do
     let(:expected_data) do
       [
         {
-          method: "where",
+          method: :where,
           args: [{ title: "Title", description: "Description" }]
         },
         {
-          method: "offset",
+          method: :offset,
           args: [10]
         },
         {
-          method: "first",
+          method: :first,
           args: []
         }
       ]

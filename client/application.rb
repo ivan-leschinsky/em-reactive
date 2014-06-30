@@ -41,7 +41,8 @@ end
 
 Evented.on(:context, :ready) do
   Document.ready? do
-    html = Handlebars.compile("main", Context.data)
-    Document.find("#container").html(html)
+    puts "Render data: #{Context.data.inspect}"
+    Handlebars.compile_and_render(:main, Context.data, "#container")
+    Evented.run(:app, :ready)
   end
 end

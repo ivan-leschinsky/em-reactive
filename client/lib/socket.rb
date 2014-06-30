@@ -14,7 +14,6 @@ class Socket
   end
 
   def on_message(e)
-    puts "on message #{e.data}"
     data = TransmissionData.from_json(e.data)
     @message_callbacks[data.uid].resolve(data)
   end
