@@ -13,8 +13,9 @@ require 'opal/browser'
 require 'opal-jquery'
 require 'server/handler'
 require 'server/em_socket'
+require 'server/trigger_storage'
 
-Opal.append_path File.expand_path("../shared", __FILE__)
+Opal.append_path File.join(ROOT, "shared")
 
 require 'shared/lib/transmission_data'
 require 'shared/lib/uid'

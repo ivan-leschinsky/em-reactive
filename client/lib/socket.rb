@@ -14,8 +14,13 @@ class Socket
   end
 
   def on_message(e)
+    puts e.data.inspect
     data = TransmissionData.from_json(e.data)
-    @message_callbacks[data.uid].resolve(data)
+    if data.message == "_notification"
+      Handlers::Notification.new(data).call
+    else
+      @message_callbacks[data.uid].resolve(data)
+    end
   end
 
   def on_close(e)

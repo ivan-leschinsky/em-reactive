@@ -11,10 +11,17 @@ module Rendering
       end
     end
 
+    def display
+      render
+      Evented.on(:app, :ready) do
+        on_app_ready
+      end
+    end
+
     private
 
     def rendering_methods
-      self.class.instance_methods(false)
+      self.class.instance_methods(false) - %w(render dispaly on_app_ready)
     end
   end
 end

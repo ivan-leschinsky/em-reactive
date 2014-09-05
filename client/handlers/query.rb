@@ -10,9 +10,9 @@ module Handlers
     end
 
     def deferred
-      $socket.write(:query, @chained_object.to_hash).tap do |deferred|
+      $socket.write(:query, @chained_object.to_hash.merge(as: @as)).tap do |deferred|
         deferred.done do |data|
-          Context[@as] = JSON.parse(data)
+          Context[@as] = JSON.parse(data) if @as
         end
       end
     end

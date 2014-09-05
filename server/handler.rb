@@ -11,6 +11,7 @@ class Handler
   }
 
   def self.call(raw_data, ws)
+    puts "INCOMING MESSAGE #{raw_data}"
     request_data = TransmissionData.from_json(raw_data)
     handler = HANDLERS[request_data.message]
     if handler

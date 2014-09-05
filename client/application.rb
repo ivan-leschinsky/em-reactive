@@ -24,6 +24,7 @@ require 'lib/context'
 require 'lib/handlebars'
 
 $socket = Socket.new("ws://localhost:8080")
+$action = Rendering::Index.new
 
 Evented.on(:socket, :ready) do
   async_require 'models' do
@@ -36,13 +37,13 @@ Evented.on(:models, :required) do
 end
 
 Evented.on(:models, :column_info_loaded) do
-  Rendering::Index.new.run
+  $action.run
 end
 
 Evented.on(:context, :ready) do
   Document.ready? do
     puts "Render data: #{Context.data.inspect}"
-    Handlebars.compile_and_render(:main, Context.data, "#container")
+    $action.display
     Evented.run(:app, :ready)
   end
 end

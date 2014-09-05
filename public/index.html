@@ -13,8 +13,11 @@
 <script id="main" type="text/x-handlebars-template">
   {{#each profiles}}
     <div>
-      first name: <b>{{first_name}}</b>
+      first name: <b>{{first_name}}</b> |
+      <input type="text" value="{{age}}" data-profile-id="{{id}}" />
+      <input type="button" value="Save" data-action="save-age" />
     </div>
+
   {{/each}}
 </script>
 
